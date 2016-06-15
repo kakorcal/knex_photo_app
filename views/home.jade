@@ -1,6 +1,16 @@
 extends ./layout
 
 block content
-  each user in users
-    h1= user.username
-    img(src='./assets/#{user.url}', alt="pic")
+  div(class='row home')
+    each user in users
+      div(class='medium-4 columns')
+        a(href='#' class='thumbnail')
+          img(src='./assets/#{user.url}' alt="pic" class='pics')
+          h4(class='pic-name')= user.photo_name
+          hr
+          div(class='meta') 
+            h6
+              em By: 
+                strong #{user.username}&nbsp;
+              em Uploaded At: 
+                strong #{user.date}

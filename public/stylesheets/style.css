@@ -1,0 +1,51 @@
+.home {
+  margin-top: 30px;
+}
+
+.nav {
+  background-color: #eeffff;
+}
+
+.top-bar ul {
+  background: none;
+}
+
+.top-bar-left .menu-text {
+  padding-left: 0;
+}
+
+.top-bar-left .menu-text h4 {
+  margin: 0;
+}
+
+.top-bar-right .button-group {
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.pics {
+  width: 100%;
+}
+
+.home .thumbnail {
+  display: block;
+}
+
+.thumbnail h4 {
+  color: #444444;
+  margin-top: 10px;
+}
+
+.thumbnail hr {
+  margin: 0.5rem 0;
+}
+
+.thumbnail .meta {
+  color: #afafaf;
+  text-align: right;
+}
+
+.pic-name, .meta {
+  padding: 0 0.5rem;
+  word-wrap: break-word;
+}
