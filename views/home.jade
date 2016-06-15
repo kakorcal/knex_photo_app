@@ -4,7 +4,7 @@ block content
   div(class='row home')
     each user in users
       div(class='medium-4 columns')
-        a(href='#' class='thumbnail')
+        a(href='/users/#{user.id}' class='thumbnail')
           img(src='./assets/#{user.url}' alt="pic" class='pics')
           h4(class='pic-name')= user.photo_name
           hr
