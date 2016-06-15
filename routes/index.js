@@ -1,5 +1,5 @@
 const users = require('./users');
-const photos = require('./photos');
-const auth = require('./auth');
+// const photos = require('./photos');
+// const auth = require('./auth');
 
-module.exports = {users, photos, auth};
+module.exports = {users};

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('cookie-session');
 const morgan = require('morgan');
-const routes = require('./routes');
+// const routes = require('./routes');
 
 app.set('view engine', 'jade');
 
@@ -17,12 +17,12 @@ app.use(methodOverride('_method'));
   // process.env.SECRET = 
 // }));
 
-app.use('./users', routes.users);
+// app.use('./users', routes.users);
 // app.use('./auth', routes.auth);
 // app.use('./users/:id/photos', routes.photos);
   
 app.get('*', (req, res)=>{
-  res.send(404);
+  res.render('error');
 });
 
 app.listen(3000, ()=>{
