@@ -1,0 +1,33 @@
+{
+  "name": "knex_photos_app_redo",
+  "version": "1.0.0",
+  "description": "For this assignment you will be combining your knowledge of knex and authentication/authorization to build a small photo sharing application.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakorcal/knex_photo_app_redo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakorcal/knex_photo_app_redo/issues"
+  },
+  "homepage": "https://github.com/kakorcal/knex_photo_app_redo#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "cookie-session": "^2.0.0-alpha.1",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "knex": "^0.11.5",
+    "method-override": "^2.3.6",
+    "pg": "^4.5.5"
+  },
+  "devDependencies": {
+    "locus": "^1.2.0",
+    "morgan": "^1.7.0"
+  }
+}
