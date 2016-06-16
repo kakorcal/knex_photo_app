@@ -4,7 +4,14 @@ const knex = require('../db/knex');
 const helpers = require('../helpers/routeHelpers');
 
 router.get('/', (req, res)=>{
-  res.redirect('/home');
+  knex.select(['u.id', 'u.username', 'p.name as photo_name'])
+  .from('users as u')
+  .leftJoin('photos as p', 'u.id', 'p.user_id')
+  .orderBy('u.id').then(data=>{
+    // TODO: use the sql count or coalesce function along with the group by clause
+    const users = helpers.assignPhotoCount(data);
+    res.render('./components/users/index', {users});
+  });
 });
 
 router.get('/:id', (req, res)=>{
