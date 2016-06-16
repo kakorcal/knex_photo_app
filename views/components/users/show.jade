@@ -20,5 +20,5 @@ block content
             h6: em Uploaded At: 
               strong #{photo.date}
             div(class='align-right button-group small')
-              a(href='#' class='secondary button hollow') EDIT 
+              a(href='/users/#{user.id}/photos/#{photo.id}/edit' class='secondary button hollow') EDIT 
               a(href='#' class='alert button hollow') DELETE

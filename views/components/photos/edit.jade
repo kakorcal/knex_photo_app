@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  div(class='row page')
+    h2 Edit Photo
+  form(action='/users/#{photo.user_id}/photos/#{photo.id}?_method=PUT' method='POST')
+    div(class='row page text-center')
+      div(class='small-2 columns')
+        label(for="pic-name" class='text-right middle'): strong Name: 
+      div(class='small-9 columns')
+        input(type="text" id='pic-name' name='photo[name]' value='#{photo.name}')
+      div(class='small-2 columns')
+        label(for="url" class='text-right middle'): strong Url: 
+      div(class='small-9 columns')
+        input(type="text" id='url' name='photo[url]' value='#{photo.url}')
+      div(class='column')
+        input(type="submit" id='url' class='button large' value='SUBMIT')        
