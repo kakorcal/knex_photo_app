@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -20,7 +21,7 @@ app.use(passport.session());
 
 app.use('/home', routes.home);
 app.use('/users', routes.users);
-// app.use('/auth', routes.auth);
+app.use('/auth', routes.auth);
 app.use('/users/:user_id/photos', routes.photos);
 
 app.get('/', (req, res)=>{
@@ -34,3 +35,5 @@ app.get('*', (req, res)=>{
 app.listen(3000, ()=>{
   console.log('Listening to port 3000');
 });
+
+// http://www.randomdoggiegenerator.com/randomdoggie.php
