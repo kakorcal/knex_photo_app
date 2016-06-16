@@ -9,7 +9,7 @@ block content
         a(href='/users/#{user.id}/photos/new' class='primary button') NEW PHOTO
         a(href='/users/#{user.id}/edit' class='secondary button') EDIT ACCOUNT
         form(action='/users/#{user.id}?_method=DELETE' method='POST')
-          input(type="submit" class='alert button' value='DELETE')
+          input(type="submit" class='alert button' value='DELETE ACCOUNT')
   div(class='row page')
     each photo in photos
       div(class='medium-3 columns')

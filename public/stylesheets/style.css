@@ -12,7 +12,7 @@
 }
 
 .top-bar-left .menu-text {
-  padding-left: 0;
+  padding: 0.7rem 2rem;
 }
 
 .top-bar-left .menu-text h4 {
@@ -20,7 +20,7 @@
 }
 
 .top-bar-right .button-group {
-  padding: 0 1rem;
+  padding: 0 3rem;
 }
 
 .button-group {
@@ -64,4 +64,5 @@
   background: none;
   border: 1px solid #2199e8;
   color: #2199e8;
+  max-width: 73.2rem;
 }

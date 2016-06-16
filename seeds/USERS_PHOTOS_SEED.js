@@ -8,16 +8,16 @@ exports.seed = function(knex, Promise) {
     ]).returning('id');
   }).then(ids=>{
     return knex('photos').insert([
-      {name: 'blah1blah1blah1', url: '/assets/dog1.jpg', date: new Date(), user_id: ids[0]},
-      {name: 'blah2blah1', url: '/assets/dog2.jpg', date: new Date(), user_id: ids[0]},
-      {name: 'blah3blah1', url: '/assets/dog3.jpg', date: new Date(), user_id: ids[1]},
-      {name: 'blah4blah1', url: '/assets/dog4.jpg', date: new Date(), user_id: ids[1]},
-      {name: 'blah5', url: '/assets/dog5.jpg', date: new Date(), user_id: ids[2]},
-      {name: 'blah7', url: '/assets/dog7.jpg', date: new Date(), user_id: ids[1]},
-      {name: 'blah8', url: '/assets/dog8.jpg', date: new Date(), user_id: ids[1]},
-      {name: 'blah9blah1', url: '/assets/dog9.jpg', date: new Date(), user_id: ids[0]},
-      {name: 'blah10blah1blah1', url: '/assets/dog10.jpg', date: new Date(), user_id: ids[2]},
-      {name: 'blah11', url: '/assets/dog11.jpg', date: new Date(), user_id: ids[2]}
+      {name: 'Nigel', url: '/assets/dog1.jpg', date: new Date(), user_id: ids[0]},
+      {name: 'Baxster', url: '/assets/dog2.jpg', date: new Date(), user_id: ids[0]},
+      {name: 'Daisy', url: '/assets/dog3.jpg', date: new Date(), user_id: ids[1]},
+      {name: 'Dog in the Park', url: '/assets/dog4.jpg', date: new Date(), user_id: ids[1]},
+      {name: 'Dog with Ball', url: '/assets/dog5.jpg', date: new Date(), user_id: ids[2]},
+      {name: 'Sitting Down', url: '/assets/dog7.jpg', date: new Date(), user_id: ids[1]},
+      {name: 'Golden Retriever', url: '/assets/dog8.jpg', date: new Date(), user_id: ids[1]},
+      {name: 'Doge', url: '/assets/dog9.jpg', date: new Date(), user_id: ids[0]},
+      {name: 'Brownie', url: '/assets/dog10.jpg', date: new Date(), user_id: ids[2]},
+      {name: 'Running in the Park', url: '/assets/dog11.jpg', date: new Date(), user_id: ids[2]}
     ]);
   });
 };
