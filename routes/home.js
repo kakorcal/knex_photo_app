@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const _ = require('lodash');
+const helpers = require('../helpers/routeHelpers');
 
 router.get('/', (req, res)=>{
   knex.select([
@@ -9,11 +9,7 @@ router.get('/', (req, res)=>{
   ]).from('users as u')
   .join('photos as p', 'u.id', 'p.user_id')
   .orderBy('p.id').then(data=>{
-    const users = _.map(data, (cur)=>{
-      const mmddyear = new Date().toString().match(/[a-zA-Z]{3} \d{2} \d{4}/)[0];
-      return _.assignIn(cur, {date: mmddyear});
-    });
-    res.render('home', {users});
+    res.render('home', {users: helpers.assignFormattedDate(data)});
   });
 });
 

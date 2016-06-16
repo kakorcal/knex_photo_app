@@ -18,7 +18,7 @@ app.use(methodOverride('_method'));
 // }));
 
 app.use('/home', routes.home);
-// app.use('/users', routes.users);
+app.use('/users', routes.users);
 // app.use('/auth', routes.auth);
 // app.use('/users/:id/photos', routes.photos);
 
