@@ -19,12 +19,15 @@
   "dependencies": {
     "bcrypt": "^0.8.6",
     "body-parser": "^1.15.1",
+    "connect-flash": "^0.1.1",
     "cookie-session": "^2.0.0-alpha.1",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "knex": "^0.11.5",
     "lodash": "^4.13.1",
     "method-override": "^2.3.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^4.5.5"
   },
   "devDependencies": {

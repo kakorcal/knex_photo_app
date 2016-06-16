@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const session = require('cookie-session');
 const morgan = require('morgan');
 const routes = require('./routes');
+const passport = require('passport');
 
 app.set('view engine', 'jade');
 
@@ -13,9 +14,9 @@ app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
-// app.use(session({
-  // process.env.SECRET = 
-// }));
+app.use(session({secret: process.env.SECRET}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/home', routes.home);
 app.use('/users', routes.users);

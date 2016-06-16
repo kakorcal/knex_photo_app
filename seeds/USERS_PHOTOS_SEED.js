@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
   return knex('users').del().then(()=>{
     return knex('users').insert([
-      {username: 'Steve'},   
-      {username: 'Andrew'},   
-      {username: 'Uthra'},   
-      {username: 'Parker'},   
+      {username: 'Steve', password: 'foo'},   
+      {username: 'Andrew', password: 'foo'},   
+      {username: 'Uthra', password: 'foo'},   
+      {username: 'Parker', password: 'foo'},   
     ]).returning('id');
   }).then(ids=>{
     return knex('photos').insert([
