@@ -1,9 +1,10 @@
-.home {
+.page {
+  margin: 0 auto;
   margin-top: 30px;
 }
 
 .nav {
-  background-color: #eeffff;
+  background-color: #def0fc;
 }
 
 .top-bar ul {
@@ -19,13 +20,19 @@
 }
 
 .top-bar-right .button-group {
-  margin: 0;
   padding: 0 1rem;
+}
+
+.button-group {
+  margin: 0;
 }
 
 .pics {
   width: 100%;
+  min-height: 263px; 
 }
+
+/*home*/
 
 .home .thumbnail {
   display: block;
@@ -48,4 +55,12 @@
 .pic-name, .meta {
   padding: 0 0.5rem;
   word-wrap: break-word;
+}
+
+/*users show*/
+
+.page.callout {
+  background: none;
+  border: 1px solid #2199e8;
+  color: #2199e8;
 }

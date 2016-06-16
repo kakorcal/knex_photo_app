@@ -20,7 +20,7 @@ app.use(methodOverride('_method'));
 app.use('/home', routes.home);
 app.use('/users', routes.users);
 // app.use('/auth', routes.auth);
-// app.use('/users/:id/photos', routes.photos);
+app.use('/users/:user_id/photos', routes.photos);
 
 app.get('/', (req, res)=>{
   res.redirect('./home');

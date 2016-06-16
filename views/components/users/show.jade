@@ -1,4 +1,24 @@
 extends ../../layout
 
 block content
-  h1 #{user.username}'s photos
+  div(class='row page align-justify align-middle callout')
+    div(class='column')
+      h1 #{user.username}'s Photos
+    div(class='column')
+      div(class='align-right button-group')
+        a(href='/users/#{user.id}/photos/new' class='primary button') NEW PHOTO
+        a(href='/users/#{user.id}/edit' class='secondary button') EDIT ACCOUNT
+        a(href='#' class='alert button') DELETE ACCOUNT
+  div(class='row page')
+    each photo in photos
+      div(class='medium-3 columns')
+        div(class='thumbnail')
+          img(src='#{photo.url}' alt="pic" class='pics')
+          h4(class='pic-name')= photo.photo_name
+          hr
+          div(class='meta') 
+            h6: em Uploaded At: 
+              strong #{photo.date}
+            div(class='align-right button-group small')
+              a(href='#' class='secondary button hollow') EDIT 
+              a(href='#' class='alert button hollow') DELETE

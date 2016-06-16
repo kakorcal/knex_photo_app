@@ -1,11 +1,11 @@
 extends ./layout
 
 block content
-  div(class='row home')
+  div(class='row page')
     each user in users
       div(class='medium-3 columns')
         a(href='/users/#{user.id}' class='thumbnail')
-          img(src='./assets/#{user.url}' alt="pic" class='pics')
+          img(src='#{user.url}' alt="pic" class='pics')
           h4(class='pic-name')= user.photo_name
           hr
           div(class='meta') 
