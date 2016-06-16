@@ -26,9 +26,11 @@ router.put('/:id', (req, res)=>{
   });
 });
 
-// router.delete('/:id', (req, res)=>{
-//   knex('photos').
-// });
+router.delete('/:id', (req, res)=>{
+  knex('photos').where('id', +req.params.id).del().then(()=>{
+    res.redirect(`/users/${req.params.user_id}`);
+  });
+});
 
 router.get('/:id/edit', (req, res)=>{
   knex('photos').where('id', req.params.id).first().then(photo=>{

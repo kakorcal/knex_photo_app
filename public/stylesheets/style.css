@@ -29,7 +29,8 @@
 
 .pics {
   width: 100%;
-  min-height: 263px; 
+  min-width: 262px; 
+  min-height: 263px;
 }
 
 /*home*/

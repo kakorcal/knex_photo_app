@@ -21,4 +21,5 @@ block content
               strong #{photo.date}
             div(class='align-right button-group small')
               a(href='/users/#{user.id}/photos/#{photo.id}/edit' class='secondary button hollow') EDIT 
-              a(href='#' class='alert button hollow') DELETE
+              form(action='/users/#{user.id}/photos/#{photo.id}?_method=DELETE' method='POST')
+                input(type="submit" class='alert button hollow' value='DELETE')
