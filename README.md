@@ -1,4 +1,4 @@
-## Knex Photo App Redo
+## Knex Photo App
 
 ### Getting started
 

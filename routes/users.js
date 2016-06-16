@@ -18,4 +18,22 @@ router.get('/:id', (req, res)=>{
   });
 });
 
+router.put('/:id', (req, res)=>{
+  knex('users').where('id', +req.params.id).update(req.body.user).then(()=>{
+    res.redirect(`/users/${req.params.id}`);
+  });
+});
+
+router.delete('/:id', (req, res)=>{
+  knex('users').where('id', +req.params.id).del().then(()=>{
+    res.redirect(`/users`);
+  });
+});
+
+router.get('/:id/edit', (req, res)=>{
+  knex('users').where('id', +req.params.id).first().then(user=>{
+    res.render('./components/users/edit', {user});
+  });
+});
+
 module.exports = router;

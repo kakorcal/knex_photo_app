@@ -1,0 +1,13 @@
+extends ../../layout
+
+block content
+  div(class='row page')
+    h2 Edit Profile
+  form(action='/users/#{user.id}?_method=PUT' method='POST')
+    div(class='row page text-center')
+      div(class='small-2 columns')
+        label(for="username" class='text-right middle'): strong Username: 
+      div(class='small-9 columns')
+        input(type="text" id='username' name='user[username]' value='#{user.username}')
+      div(class='column')
+        input(type="submit" class='button large' value='SUBMIT')        

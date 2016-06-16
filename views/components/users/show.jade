@@ -8,7 +8,8 @@ block content
       div(class='align-right button-group')
         a(href='/users/#{user.id}/photos/new' class='primary button') NEW PHOTO
         a(href='/users/#{user.id}/edit' class='secondary button') EDIT ACCOUNT
-        a(href='#' class='alert button') DELETE ACCOUNT
+        form(action='/users/#{user.id}?_method=DELETE' method='POST')
+          input(type="submit" class='alert button' value='DELETE')
   div(class='row page')
     each photo in photos
       div(class='medium-3 columns')
