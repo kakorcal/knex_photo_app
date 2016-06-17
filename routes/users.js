@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const routeHelpers = require('../helpers/routeHelpers');
+// TODO: Users not authenticated should not be able to see edit/delete buttons. And
+// users should not be able to edit/delete other users photos. Add middleware to prevent that.
 
 router.get('/', (req, res)=>{
   knex.select(['u.id', 'u.username', 'p.name as photo_name'])
