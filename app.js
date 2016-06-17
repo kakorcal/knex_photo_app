@@ -7,6 +7,7 @@ const session = require('cookie-session');
 const morgan = require('morgan');
 const routes = require('./routes');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 app.set('view engine', 'jade');
 
@@ -18,6 +19,7 @@ app.use(methodOverride('_method'));
 app.use(session({secret: process.env.SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use('/home', routes.home);
 app.use('/users', routes.users);

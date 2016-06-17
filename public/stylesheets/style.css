@@ -66,3 +66,8 @@
   color: #2199e8;
   max-width: 73.2rem;
 }
+
+.page.callout.error {
+  border: 1px solid red;
+  color: red;
+}
