@@ -18,15 +18,15 @@ passport.use(new LocalStrategy({
   function verify(req, username, password, done){
     console.log('Verify');
     knex('users').where({username}).first().then(user=>{
-      if(!user) return done(null, false);
+      if(!user) return done(null, false, {message: 'Username Does Not Exist'});
       
       bcrypt.compare(password, user.password, (err, res)=>{
         // Test if this error should be passed to the verify callback or just throw an error
         if(err) throw err;
         if(!res) {
-          return done(null, false);
+          return done(null, false, {message: 'Incorrect Password'});
         }else{
-          return done(null, user);
+          return done(null, user, {message: 'Login Successful'});
         }
       });
     });
@@ -67,7 +67,10 @@ router.post('/new', (req, res, next)=>{
           // This line is from the example in the docs, so unsure of what middleware is 
           // invoked next if err exists
           if(err) return next(err);
-          if(!user) return res.redirect('/auth/new');
+          if(!user) {
+            req.flash('Login Error', info.message);
+            return res.redirect('/auth/new');
+          }
           // if user has successfully created an account or verified their credentials
           // call the logIn method. 
           // When logIn is invoked, user is passed to serializeUser (if creating an account or 
@@ -76,12 +79,13 @@ router.post('/new', (req, res, next)=>{
           req.logIn(user, err=>{
             // This callback is invoked only after serializing and deserializing
             if(err) return next(err);
+            req.flash('Login Success', info.message);
             return res.redirect('/users');
           });
         })(req, res, next);
       }).catch(err=>{
         // TODO: Add flash message if username is taken. Redirect to signup page
-        req.flash('Sign Up Error', '*Username Is Taken');
+        req.flash('Sign Up Error', 'Username Is Taken');
         res.redirect('/auth/new');
       });
     });
@@ -98,5 +102,11 @@ router.get('/login', (req, res)=>{
 //     failureRedirect: '/auth/new'
 //   })
 // );
+
+router.get('/logout', (req, res)=>{
+  req.logout();
+  req.flash('Logout Success', 'You Have Logged Out');
+  res.redirect('/home');
+});
 
 module.exports = router;

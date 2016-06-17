@@ -10,7 +10,7 @@ router.get('/', (req, res)=>{
   .orderBy('u.id').then(data=>{
     // TODO: use the sql count or coalesce function along with the group by clause
     const users = helpers.assignPhotoCount(data);
-    res.render('./components/users/index', {users});
+    res.render('./components/users/index', {users, messages: req.flash('Login Success')});
   });
 });
 

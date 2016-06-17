@@ -1,4 +1,4 @@
-if(messages.length) 
-  div(class='row column page callout error')
+if(messages && messages.length) 
+  div(class='row column page callout')
     each message in messages
       h5= message

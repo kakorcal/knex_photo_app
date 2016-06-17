@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
   ]).from('users as u')
   .join('photos as p', 'u.id', 'p.user_id')
   .orderBy('p.id').then(data=>{
-    res.render('home', {users: helpers.assignFormattedDate(data)});
+    res.render('home', {users: helpers.assignFormattedDate(data), messages: req.flash('Logout Success')});
   });
 });
 
