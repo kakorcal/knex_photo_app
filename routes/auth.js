@@ -21,8 +21,7 @@ passport.use(new LocalStrategy({
       if(!user) return done(null, false, {message: 'Username Does Not Exist'});
       
       bcrypt.compare(password, user.password, (err, res)=>{
-        // Test if this error should be passed to the verify callback or just throw an error
-        if(err) throw err;
+        if(err) return done(err);
         if(!res) {
           return done(null, false, {message: 'Incorrect Password'});
         }else{
@@ -62,13 +61,15 @@ router.post('/new', (req, res, next)=>{
         // When passport.authenticate is called it invokes the local strategy constructor
         // the verify callback is invoked with different params depending on the control flow of the
         // local strategy constructor
-        passport.authenticate('local', (err, user, info)=>{
+        passport.authenticate('local', (err, user, flash)=>{
           console.log('Authenticate after creating account');
           // This line is from the example in the docs, so unsure of what middleware is 
           // invoked next if err exists
           if(err) return next(err);
+          // This if statement is technically not necessary when the user creates an account
+          // because we know for sure that the password is going to be correct.
           if(!user) {
-            req.flash('Login Error', info.message);
+            req.flash('Login Error', flash.message);
             return res.redirect('/auth/new');
           }
           // if user has successfully created an account or verified their credentials
@@ -79,8 +80,8 @@ router.post('/new', (req, res, next)=>{
           req.logIn(user, err=>{
             // This callback is invoked only after serializing and deserializing
             if(err) return next(err);
-            req.flash('Login Success', info.message);
-            return res.redirect('/users');
+            req.flash('Login Success', flash.message);
+            return res.redirect(`/users/${user.id}`);
           });
         })(req, res, next);
       }).catch(err=>{
@@ -96,12 +97,22 @@ router.get('/login', (req, res)=>{
   res.render('./components/auth/login');
 });
 
-// router.post('/login', 
-//   passport.authenticate('local', {
-//     successRedirect: '/users',
-//     failureRedirect: '/auth/new'
-//   })
-// );
+router.post('/login', (req, res, next)=>{
+  passport.authenticate('local', (err, user, flash)=>{
+    console.log('Authenticate after logging in');
+    if(err) return next(err);
+    if(!user) {
+      req.flash('Login Error', flash.message);
+      return res.redirect('/auth/new');
+    }
+    
+    req.logIn(user, err=>{
+      if(err) return next(err);
+      req.flash('Login Success', flash.message);
+      return res.redirect(`/users/${user.id}`);
+    });
+  })(req, res, next);  
+});
 
 router.get('/logout', (req, res)=>{
   req.logout();

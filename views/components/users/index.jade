@@ -1,16 +1,17 @@
 extends ../../layout
 
 block content
-  table(class='hover')
-    thead: tr
-      th Id
-      th Username
-      th Photos
-      th Count
-    tbody
-      each user in users
-        tr
-          td= user.id
-          td: a(href='/users/#{user.id}')= user.username
-          td= user.photos
-          td= user.count
+  div(class='row column page')
+    table(class='hover')
+      thead: tr
+        th Id
+        th Username
+        th Photos
+        th Count
+      tbody
+        each user in users
+          tr
+            td= user.id
+            td: a(href='/users/#{user.id}')= user.username
+            td= user.photos
+            td= user.count
