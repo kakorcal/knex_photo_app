@@ -1,5 +1,18 @@
 extends ../../layout
 
 block content
-  div(class='row page column')
+  div(class='row page')
     h1 Create A Knex Photo Account
+  form(action='/auth/new' method='POST')
+    div(class='row page text-center')
+      div(class='small-2 columns')
+        label(for="username" class='text-right middle'): strong Username: 
+      div(class='small-9 columns')
+        input(type="text" id='username' name='user[username]')
+      div(class='small-2 columns')
+        label(for="password" class='text-right middle'): strong Password: 
+      div(class='small-9 columns')
+        input(type="password" id='password' name='user[password]')
+      div(class='column')
+        input(type="submit" class='button large' value='SIGNUP')        
+    
