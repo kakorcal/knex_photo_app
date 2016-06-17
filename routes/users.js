@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const helpers = require('../helpers/routeHelpers');
+const routeHelpers = require('../helpers/routeHelpers');
 
 router.get('/', (req, res)=>{
   knex.select(['u.id', 'u.username', 'p.name as photo_name'])
@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
   .leftJoin('photos as p', 'u.id', 'p.user_id')
   .orderBy('u.id').then(data=>{
     // TODO: use the sql count or coalesce function along with the group by clause
-    const users = helpers.assignPhotoCount(data);
+    const users = routeHelpers.assignPhotoCount(data);
     res.render('./components/users/index', {users, messages: req.flash('Login Success')});
   });
 });
@@ -19,7 +19,7 @@ router.get('/:id', (req, res)=>{
     knex.select(['p.id', 'p.name as photo_name', 'p.url', 'p.date'])
     .from('photos as p').where('user_id', user.id)
     .then(data=>{
-      const photos = helpers.assignFormattedDate(data);
+      const photos = routeHelpers.assignFormattedDate(data);
       res.render('./components/users/show', {user, photos});
     });
   });

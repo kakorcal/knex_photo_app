@@ -1,7 +1,7 @@
 module.exports = {
   currentUser(req, res, next){
     // attach req.user to req.locals so all jade templates has access
-    if(req.isAuthenticated()) req.locals.currentUser = req.user;
+    if(req.isAuthenticated()) res.locals.current = req.user;
     return next();
   },
   preventLoginSignup(req, res, next){

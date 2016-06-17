@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const passport = require('passport');
 const flash = require('connect-flash');
+const authHelpers = require('./helpers/authHelpers');
 
 // Config
 app.set('view engine', 'jade');
@@ -19,6 +20,9 @@ app.use(session({secret: process.env.SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+// All routes below this one will now have access to currentUser
+app.use(authHelpers.currentUser);
+
 
 // Routes
 app.use('/home', routes.home);

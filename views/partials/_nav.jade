@@ -3,8 +3,12 @@ nav(class='top-bar nav success')
     ul(class='menu')
       li(class='menu-text'): a(href='/home'): h4 Knex Photo App
   div(class='top-bar-right')
-    div(class='row align-right button-group')
-      a(href='/auth/new' class='success button') CREATE ACCOUNT
-      a(href='/auth/login' class='warning button') KNEX LOGIN
-      a(href='#' class='button') FACEBOOK LOGIN
-      a(href="/auth/logout" class='alert button') LOGOUT
+    if(!current)
+      div(class='row align-right button-group')
+        a(href='/auth/new' class='success button') CREATE ACCOUNT
+        a(href='/auth/login' class='warning button') KNEX LOGIN
+        a(href='#' class='button') FACEBOOK LOGIN
+    else
+      div(class='row align-right button-group')
+        a(href='/users/#{current.id}' class='success button') CURRENT USER: #{current.username}
+        a(href="/auth/logout" class='alert button') LOGOUT
