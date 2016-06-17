@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
+const authHelpers = require('../helpers/authHelpers');
 const _ = require('lodash');
 // TODO: Separate passport/bcrypt logic into separate file
 
@@ -52,7 +53,7 @@ router.get('/new', (req, res)=>{
 });
 
 
-router.post('/new', (req, res, next)=>{
+router.post('/new', authHelpers.preventLoginSignup, (req, res, next)=>{
   bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt)=>{
     bcrypt.hash(req.body.user.password, salt, (err, hash)=>{
       // Store hash in db
@@ -97,7 +98,7 @@ router.get('/login', (req, res)=>{
   res.render('./components/auth/login');
 });
 
-router.post('/login', (req, res, next)=>{
+router.post('/login', authHelpers.preventLoginSignup, (req, res, next)=>{
   passport.authenticate('local', (err, user, flash)=>{
     console.log('Authenticate after logging in');
     if(err) return next(err);

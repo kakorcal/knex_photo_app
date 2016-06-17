@@ -10,7 +10,7 @@ router.get('/', (req, res)=>{
   .orderBy('u.id').then(data=>{
     // TODO: use the sql count or coalesce function along with the group by clause
     const users = routeHelpers.assignPhotoCount(data);
-    res.render('./components/users/index', {users, messages: req.flash('Login Success')});
+    res.render('./components/users/index', {users});
   });
 });
 
@@ -20,7 +20,7 @@ router.get('/:id', (req, res)=>{
     .from('photos as p').where('user_id', user.id)
     .then(data=>{
       const photos = routeHelpers.assignFormattedDate(data);
-      res.render('./components/users/show', {user, photos});
+      res.render('./components/users/show', {user, photos, messages: req.flash('Login Success')});
     });
   });
 });

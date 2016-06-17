@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const helpers = require('../helpers/routeHelpers');
+const routeHelpers = require('../helpers/routeHelpers');
+const _ = require('lodash');
 
 router.get('/', (req, res)=>{
   knex.select([
@@ -9,7 +10,10 @@ router.get('/', (req, res)=>{
   ]).from('users as u')
   .join('photos as p', 'u.id', 'p.user_id')
   .orderBy('p.id').then(data=>{
-    res.render('home', {users: helpers.assignFormattedDate(data), messages: req.flash('Logout Success')});
+    const flash = _.reduce(['Logout Success', 'Prevent Login Signup'], (acc, cur)=>{
+      return acc.concat(req.flash(cur));
+    }, []);
+    res.render('home', {users: routeHelpers.assignFormattedDate(data), messages: flash});
   });
 });
 
