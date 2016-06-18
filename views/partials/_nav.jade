@@ -7,7 +7,7 @@ nav(class='top-bar nav success')
       div(class='row align-right button-group')
         a(href='/auth/new' class='success button') CREATE ACCOUNT
         a(href='/auth/login' class='warning button') KNEX LOGIN
-        a(href='#' class='button') FACEBOOK LOGIN
+        a(href='/auth/facebook' class='button') FACEBOOK LOGIN
     else
       div(class='row align-right button-group')
         a(href='/users/#{current.id}' class='success button') CURRENT USER: #{current.username}
