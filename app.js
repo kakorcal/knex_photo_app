@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-app.use(session({secret: process.env.SECRET}));
+app.use(session({secret: process.env.LOCAL_SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
